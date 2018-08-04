@@ -3,6 +3,10 @@
   "author": "Livepeer",
   "version": "0.0.1",
   "description": "Livepeer Desktop App",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livepeer/LivepeerDesktop.git"
+  },
   "main": "main.js",
   "scripts": {
     "lint": "eslint app test *.js",
@@ -22,7 +26,7 @@
   "bin": {
     "electron": "./node_modules/.bin/electron"
   },
-  "license": "GNU",
+  "license": "GPL-3.0-only",
   "devDependencies": {
     "asar": "^0.12.3",
     "babel-core": "^6.14.0",
