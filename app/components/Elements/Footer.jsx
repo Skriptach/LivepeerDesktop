@@ -1,7 +1,6 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react';
 import classNames from 'classnames';
-import { Link } from 'react-router';
 import ICO_fullscreen from '../../static/fullscreen.svg';
 import ICO_fullscreenExit from '../../static/fullscreen-exit.svg';
 
