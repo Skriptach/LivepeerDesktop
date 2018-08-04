@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { Provider } from 'mobx-react';
-import { Home, Counter } from './containers';
+import { Home } from './containers';
 import { VideoStore, WinStore } from './stores';
 import './styles/main.css';
+
 
 const eventsHandler = require('electron').ipcRenderer;
 
@@ -27,23 +27,19 @@ const stores = {
     win: new WinStore({ events: eventsHandler })
 };
 
+
 const App = ({ children }) => (
   <Provider {...stores}>
     {children}
   </Provider>
 );
 
-const Routes = (
-  <Route path="/" component={App}>
-    <IndexRoute component={Home} />
-    <Route path="/counter" component={Counter} />
-  </Route>
-);
-
 render(
   <div>
     {/* isDev && <DevTools /> */}
-    <Router history={hashHistory} routes={Routes} />
+    <App>
+      <Home/>
+    </App>
   </div>,
   document.getElementById('root')
 );

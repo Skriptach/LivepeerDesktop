@@ -17,7 +17,7 @@ export default class WinStore {
 
   @action startLivePeer = () => {
       // Start livepeer
-      this.events.send('startLivepeer');
+      //this.events.send('startLivepeer');
   }
 
   @action toggle = () => {

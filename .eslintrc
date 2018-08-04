@@ -1,6 +1,6 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": "eslint:recommended",
   "env": {
     "browser": true,
     "mocha": true,
@@ -20,10 +20,10 @@
     "import/prefer-default-export": "off",
     "import/no-unresolved": [0],
     "import/no-named-as-default": "off",
-    "no-console": ["error", { allow: ["warn", "error"] }],
+    "no-console": ["error", { "allow": ["warn", "error"] }],
     "no-unused-expressions": ["error", { "allowShortCircuit": true }]
   },
   "plugins": [
-    "react",
+    "react"
   ]
 }

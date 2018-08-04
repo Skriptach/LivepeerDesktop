@@ -5,21 +5,21 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const DefinePlugin = require('webpack').DefinePlugin;
 
 export default {
+    mode: 'development',
     module: {
-        loaders: [{
+        rules: [{
             test: /\.jsx?$/,
-            loaders: ['babel-loader'],
+            loader: 'babel-loader',
             exclude: /node_modules/
         }, {
-            test: /\.json$/,
-            loader: 'json-loader'
-        }, { test: /\.svg$/, loader: 'svg-inline-loader' },
-        {
+            test: /\.svg$/,
+            loader: 'svg-inline-loader'
+        }, {
             test: /^((?!\.global).)*\.css$/,
-            loader: ExtractTextPlugin.extract(
-      'style-loader',
-      'postcss-loader'
-    )
+            loader: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'postcss-loader'
+            })
         }
         ]
     },
@@ -28,15 +28,14 @@ export default {
         filename: 'bundle.js'
     },
     resolve: {
-    // root:[],
-        extensions: ['', '.js', '.jsx', '.json'],
-        packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
+        extensions: ['.js', '.jsx', '.json'],
+        mainFields: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
     },
     plugins: [
         new CopyWebpackPlugin([
             { from: './app/static', to: path.join(__dirname, './dist/static') }
         ]),
-        new ExtractTextPlugin('style.css', { allChunks: true }),
+        new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
         new DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV)

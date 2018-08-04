@@ -17,7 +17,7 @@ export const livepeerEvents = ({ api, emitter, listener, config }) => {
         Start LivePeer
     */
     listener.on('startLivepeer', () => {
-        api.startLivepeer()
+        //api.startLivepeer()
     })
 
     /*
