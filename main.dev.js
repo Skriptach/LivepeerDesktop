@@ -2,7 +2,6 @@
     Bootstrap of Electron 🚀
 */
 import { app, BrowserWindow, Menu, ipcMain } from 'electron';
-import { ElectronMenu } from './menu';
 import { LivePeerAPI } from './api';
 import { events } from './events';
 import { main } from './config/config';
@@ -12,7 +11,6 @@ const api = new LivePeerAPI();
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow = null
-let menu
 
 const installExtensions = async () => {
     if (process.env.NODE_ENV === 'development') {
@@ -55,14 +53,16 @@ app.on('ready', async () => {
     mainWindow.on('closed', () => { mainWindow = null })
 
     mainWindow.on('enter-full-screen', () => {
-      // Send async message to renderer process to update the store
+        // Send async message to renderer process to update the store
         mainWindow.webContents.send('fullscreen-toggled', true);
     });
 
     mainWindow.on('leave-full-screen', () => {
-      // Send async message to renderer process to update the store
+        // Send async message to renderer process to update the store
         mainWindow.webContents.send('fullscreen-toggled', false);
     });
+
+    Menu.setApplicationMenu(null);
 
     if (process.env.NODE_ENV === 'development') {
         mainWindow.openDevTools()
@@ -78,11 +78,4 @@ app.on('ready', async () => {
         });
     }
 
-    menu = Menu.buildFromTemplate(ElectronMenu);
-
-    if (process.platform === 'darwin') {
-        Menu.setApplicationMenu(menu)
-    } else {
-        mainWindow.setMenu(menu)
-    }
 })
