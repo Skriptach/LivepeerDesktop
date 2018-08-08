@@ -4,7 +4,7 @@ const CONSTANTS = {
         1: 'Starting Livepeer Node',
         2: 'Camera Aquisition',
         3: 'Start Broadcasting',
-        4: 'Starting Streaming Node'
+        4: 'Connecting to Streaming Node'
     },
     error: {
         1: {
@@ -26,6 +26,10 @@ const CONSTANTS = {
         5: {
             message: 'Your camera is busy, release your camera first.',
             critical: true
+        },
+        6: {
+            message: 'AccountID or StreamID is incorrect.',
+            loadingKeys: [4]
         }
     },
     webURL: 'http://media.livepeer.org/player.html?strmID='
