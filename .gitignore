@@ -37,3 +37,6 @@ dist
 
 # Temp folder
 tmp
+
+# VS Code IDE configs
+.vscode

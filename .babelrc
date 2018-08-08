@@ -3,7 +3,8 @@
   "plugins": ["add-module-exports", "transform-decorators-legacy"],
   "env": {
     "development": {
-      "presets": ["react-hmre"]
+      "presets": ["react-hmre"],
+      "retainLines": true
     },
     "test": {
       "plugins": [
