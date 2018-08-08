@@ -20,7 +20,7 @@ npm start
 | `npm run dev` | start dev (webpack will hot-reload the JavaScript and CSS) |
 | `npm run debug` | start debugging of `main` process
 | `npm run dist` | generate a new build to `/dist` :shipit: 🎉 |
-| `npm run release` | build a new package release for all plateform |
+| `npm run release` | build a new package release for all platforms |
 
 
 ## Apps
@@ -28,7 +28,7 @@ npm start
 
 ## Package release
 
-[electron-packager](https://github.com/electron-userland/electron-packager) is used generate the packages. You can create a release for all plateform via `npm run release` or platform specific via `npm run [package-mac | package-linux | package-win]`
+[electron-packager](https://github.com/electron-userland/electron-packager) is used generate the packages. You can create a release for all platforms via `npm run release` or platform specific via `npm run [package-mac | package-linux | package-win]`
 
 ## Updates
 
