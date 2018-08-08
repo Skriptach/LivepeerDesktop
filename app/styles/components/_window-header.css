@@ -54,21 +54,32 @@
 
 .window-header .window__controls {
     position: absolute;
-    left: 10px
+    right: 10px;
+}
+
+.window-header .switch__controls {
+    position: absolute;
+    left: 10px;
+}
+
+.window-header .switch__controls-back i {
+    display: inline-block;
+    transform: rotateY(180deg);
 }
 
 .window-header .window__controls a {
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: rgba(256,256,256,0.1);
     border-radius: 50%;
-    margin-left: 5px;
+    margin-left: 8px;
+    cursor: pointer;
 }
 
 .window-header .window__controls a svg {
-    width: 14px;
-    height: 14px;
+    width: 100%;
+    height: 100%;
 }

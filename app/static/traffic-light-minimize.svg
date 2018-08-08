@@ -11,6 +11,6 @@
   </defs>
   <g fill="none" fill-rule="evenodd">
     <use fill="#FFC02F" stroke="url(#e)" mask="url(#f)" xlink:href="#d"/>
-    <path class="hidden" stroke="#995700" d="M2,6 L10,6"/>
+    <path stroke="#995700" d="M2,6 L10,6"/>
   </g>
 </svg>

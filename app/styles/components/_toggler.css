@@ -51,6 +51,10 @@
     font-size: 1.2em;
 }
 
+.toggler__wrapper:not(.playerFocused) #sourceID {
+    text-align: center;
+}
+
 [class*='toggler__player-button'] {
     height: 100%;
     @extend .flexCenter;
@@ -86,12 +90,12 @@
 
 /* states */
 
-.toggler__wrapper-playerFocused .toggler__broadcaster { display: none }
-.toggler__wrapper-playerFocused .toggler__player {
+.playerFocused .toggler__broadcaster { display: none }
+.playerFocused .toggler__player {
     margin-bottom: 20px;
     transform: scale(1.2);
 }
-.toggler__wrapper-playerFocused [class*='toggler__player-button'] {
+.playerFocused [class*='toggler__player-button'] {
     display: flex;
     animation: fadeInFromNone 0.5s ease-out;
 }

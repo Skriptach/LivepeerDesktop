@@ -11,7 +11,7 @@
   </defs>
   <g fill="none" fill-rule="evenodd">
     <use fill="#ff6159" stroke="url(#bc)" mask="url(#c)" xlink:href="#a"/>
-    <g class="hidden" stroke="#4D0000" transform="translate(3 3)" stroke-linecap="round">
+    <g stroke="#4D0000" transform="translate(3 3)" stroke-linecap="round">
       <path d="M0.5,0.5 L5.5,5.5"/>
       <path d="M0.5,0.5 L5.5,5.5" transform="matrix(-1 0 0 1 6 0)"/>
     </g>

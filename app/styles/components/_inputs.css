@@ -14,6 +14,7 @@ input,
     outline: none;
     border: 0;
     color: #FFF;
+    min-width: 215px;
     /* Ensure focus on inputs doesn't allow app dragging */
     -webkit-app-region: no-drag;
 }

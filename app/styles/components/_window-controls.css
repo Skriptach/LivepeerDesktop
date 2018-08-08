@@ -3,5 +3,5 @@
   display: flex;
   align-items: center;
 }
+.switch__controls a svg,
 .window__controls a svg { transition: all .3s ease }
-.window__controls:hover a svg .hidden { display: inherit !important }

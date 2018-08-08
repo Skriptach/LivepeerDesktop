@@ -19,7 +19,7 @@ class Toggler extends React.Component {
 
     getClassState = () => classNames({
         toggler__wrapper: true,
-        'toggler__wrapper-playerFocused': this.state.focus
+        'playerFocused': this.state.focus
     })
 
     toggleRecord = () => {
@@ -31,10 +31,13 @@ class Toggler extends React.Component {
         if (this.state.processSubmit) {
             return;
         }
-        if (!focus) {
-            this.playerID.innerText = '';
-        }
-        this.setState({ focus })
+        const strmID = this.playerID.innerText;
+        this.setState({ focus: !this.state.focus || !!strmID.length || focus });
+    }
+
+    clear = () => {
+        this.playerID.innerText = '';
+        sourceID.focus();
     }
 
     submitForm = () => {
@@ -45,29 +48,31 @@ class Toggler extends React.Component {
 
     render() {
         return (
-          <div className={this.getClassState()}>
-            <button className="toggler__broadcaster" onClick={() => this.toggleRecord()}>
-              <span className="toggler__broadcaster-label">Rec</span>
-              <span className="toggler__broadcaster_recording-label">Stop</span>
-              <i className="toggler__broadcaster-icon" dangerouslySetInnerHTML={{ __html: stop }} />
-            </button>
-            <div className="toggler__player">
-              <button className="toggler__player-button-cancel ">
-                <i className="toggler__player-button-icon" dangerouslySetInnerHTML={{ __html: close }} />
-              </button>
-              <span
-                ref={(c) => { this.playerID = c; }}
-                onFocus={() => this.toggleFocus(true)}
-                onBlur={() => this.toggleFocus(false)}
-                contentEditable
-                data-tooltip="or You have a Stream ID?" placeholder="Paste here your Stream ID"
-              />
-              <button onMouseDown={(e) => this.submitForm(e)} className="toggler__player-button-send withBorder" type="submit">
-                <span className="toggler__player-button-label">View</span>
-                <i className="toggler__player-button-icon" dangerouslySetInnerHTML={{ __html: arrowRight }} />
-              </button>
+            <div className={this.getClassState()}>
+                <button className="toggler__broadcaster" onClick={() => this.toggleRecord()}>
+                    <span className="toggler__broadcaster-label">Rec</span>
+                    <span className="toggler__broadcaster_recording-label">Stop</span>
+                    <i className="toggler__broadcaster-icon" dangerouslySetInnerHTML={{ __html: stop }} />
+                </button>
+                <div className="toggler__player">
+                    <button className="toggler__player-button-cancel "
+                        onClick={this.clear}>
+                        <i className="toggler__player-button-icon" dangerouslySetInnerHTML={{ __html: close }} />
+                    </button>
+                    <span
+                        id="sourceID"
+                        ref={(c) => { this.playerID = c; }}
+                        onFocus={() => this.toggleFocus(true)}
+                        onBlur={() => this.toggleFocus(false)}
+                        contentEditable
+                        data-tooltip="or You have a Stream ID?" placeholder="Paste here your Stream ID"
+                    />
+                    <button onMouseDown={this.submitForm} className="toggler__player-button-send withBorder outstandRight" type="submit">
+                        <span className="toggler__player-button-label">View</span>
+                        <i className="toggler__player-button-icon" dangerouslySetInnerHTML={{ __html: arrowRight }} />
+                    </button>
+                </div>
             </div>
-          </div>
         );
     }
 }

@@ -37,6 +37,11 @@ button.withBorder {
     border-radius: 3px;
 }
 
+button.outstandRight {
+    position: absolute;
+    left: 100%;
+}
+
 button.withBorder:hover {
     border-color: transparent
 }
