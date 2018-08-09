@@ -10,8 +10,8 @@
   "main": "main.js",
   "scripts": {
     "lint": "eslint app test *.js",
-    "dist-main": "env-cmd ./.prod.env node -r babel-register webpack --config ./config/webpack.config.electron.js --progress --profile --colors --display-error-details",
-    "dist-renderer": "env-cmd ./.prod.env node -r babel-register webpack --config ./config/webpack.config.prod.js --progress --profile --colors --display-error-details",
+    "dist-main": "env-cmd ./.prod.env node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.electron.js --progress --profile --colors --display-error-details",
+    "dist-renderer": "env-cmd ./.prod.env node -r babel-register ./node_modules/webpack/bin/webpack --config ./config/webpack.config.prod.js --progress --profile --colors --display-error-details",
     "dist": "npm run dist-main && npm run dist-renderer",
     "start": "npm run dist && env-cmd ./.prod.env electron ./main",
     "start-hot": "env-cmd ./.dev.env electron -r babel-register -r babel-polyfill ./main.dev",
@@ -26,8 +26,7 @@
     "package-linux": "build -l"
   },
   "bin": {
-    "electron": "./node_modules/.bin/electron",
-    "webpack": "./node_modules/webpack/bin/webpack.js"
+    "electron": "./node_modules/.bin/electron"
   },
   "license": "GPL-3.0-only",
   "devDependencies": {
