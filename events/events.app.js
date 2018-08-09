@@ -13,11 +13,7 @@ export const appEvents = ({ app, mainWindow, api, listener, emitter }) => {
         // to stay active until the user quits explicitly with Cmd + Q
 
         api.removeAllListeners('notifier');
-        api.stopEmitter();
-        api.stopFFMpeg().then(() => {
-            api.stopLivepeer();
-            mainWindow.close();
-        })
+        app.quit();
     }
 
     // Start logging
