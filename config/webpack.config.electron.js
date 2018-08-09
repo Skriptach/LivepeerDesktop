@@ -23,7 +23,7 @@ export default merge(baseConfig, {
         }),
         new webpack.BannerPlugin(
             {
-                banner: 'require("source-map-support").install();',
+                banner: 'require("source-map-support").install();var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;',
                 raw: true,
                 entryOnly: false
             }
