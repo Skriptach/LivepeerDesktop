@@ -1,7 +1,9 @@
 /* eslint max-len: 0 */
+import path from 'path'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import baseConfig from '../webpack.config.base'
+import Dotenv from 'dotenv-webpack'
 
 const port = process.env.PORT || 3000;
 
@@ -22,11 +24,11 @@ export default merge(baseConfig, {
     },
 
     plugins: [
+        new Dotenv({
+            path: path.resolve(process.cwd(), '.dev.env')
+        }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('development')
-        })
+        new webpack.NoEmitOnErrorsPlugin()
     ],
 
     target: 'electron-renderer'

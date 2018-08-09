@@ -1,9 +1,12 @@
+import path from 'path'
 import webpack from 'webpack'
 import merge from 'webpack-merge'
 import UglifyJsPlugin from 'uglifyjs-webpack-plugin'
 import baseConfig from '../webpack.config.base'
+import Dotenv from 'dotenv-webpack'
 
 export default merge(baseConfig, {
+    mode: 'production',
     devtool: 'source-map',
 
     entry: ['babel-polyfill', './main.dev'],
@@ -15,6 +18,9 @@ export default merge(baseConfig, {
     },
 
     plugins: [
+        new Dotenv({
+            path: path.resolve(process.cwd(), '.prod.env')
+        }),
         new UglifyJsPlugin({
             uglifyOptions: {
                 ecma: 8,
@@ -27,12 +33,7 @@ export default merge(baseConfig, {
                 raw: true,
                 entryOnly: false
             }
-        ),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production')
-            }
-        })
+        )
     ],
 
     target: 'electron-main',
