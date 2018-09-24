@@ -2,8 +2,8 @@ import React from 'react';
 import { observer, inject } from 'mobx-react';
 /* WTF? if immported via '../ it fail on prod env*/
 import Toggler from '../Actions/Toggler';
-import ControlsBrodcast from '../Media/ControlsBrodcast';
-import ControlsPlayer from '../Media/ControlsBrodcast';
+import ControlsBroadcast from '../Media/ControlsBroadcast';
+import ControlsPlayer from '../Media/ControlsPlayer';
 
 
 @inject('video')
@@ -15,7 +15,7 @@ class Controls extends React.Component {
         return (
           <div className="controls-container">
             <Toggler />
-            {broadcasting !== 0 && <ControlsBrodcast />}
+            {broadcasting !== 0 && <ControlsBroadcast />}
             {playing !== 0 && <ControlsPlayer />}
           </div>
         );

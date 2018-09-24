@@ -32,4 +32,4 @@ export { default as Openexternal } from './Actions/Openexternal';
 
 export { default as Video } from './Media/Video';
 export { default as ControlsPlayer } from './Media/ControlsPlayer';
-export { default as ControlsBrodcast } from './Media/ControlsBrodcast';
+export { default as ControlsBroadcast } from './Media/ControlsBroadcast';

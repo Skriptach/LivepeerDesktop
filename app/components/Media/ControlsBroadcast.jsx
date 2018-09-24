@@ -7,7 +7,7 @@ import CONSTANTS from '../../constants';
 import { Modal, Clipboard, Openexternal } from '../';
 
 @inject('video') @observer
-class ControlsBrodcast extends React.Component {
+class ControlsBroadcast extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -77,4 +77,4 @@ class ControlsBrodcast extends React.Component {
 }
 
 
-export default ControlsBrodcast
+export default ControlsBroadcast
