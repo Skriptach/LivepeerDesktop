@@ -1,5 +1,5 @@
 /*
-    Bootstrap of Electron 🚀
+	Bootstrap of Electron 🚀
 */
 import { app, BrowserWindow, Menu, ipcMain } from 'electron';
 import { LivePeerAPI } from './api';
@@ -13,69 +13,69 @@ const api = new LivePeerAPI();
 let mainWindow = null
 
 const installExtensions = async () => {
-    if (process.env.NODE_ENV === 'development') {
-        require('electron-debug')();
+	if (process.env.NODE_ENV === 'development') {
+		require('electron-debug')();
 
-        const installer = require('electron-devtools-installer') // eslint-disable-line global-require
+		const installer = require('electron-devtools-installer') // eslint-disable-line global-require
 
-        const extensions = ['REACT_DEVELOPER_TOOLS', 'REACT_PERF']
+		const extensions = ['REACT_DEVELOPER_TOOLS', 'REACT_PERF']
 
-        const forceDownload = !!process.env.UPGRADE_EXTENSIONS
-        for (const name of extensions) {
-            try {
-                await installer.default(installer[name], forceDownload);
-      } catch (e) {} // eslint-disable-line
-        }
-    }
+		const forceDownload = !!process.env.UPGRADE_EXTENSIONS
+		for (const name of extensions) {
+			try {
+				await installer.default(installer[name], forceDownload);
+			} catch (e) {} // eslint-disable-line
+		}
+	}
 }
 
 app.on('ready', async () => {
-    await installExtensions()
+	await installExtensions()
 
-    mainWindow = new BrowserWindow({
-        width: 1024,
-        height: 728,
-        backgroundColor: '#04050A',
-        show: false
-    })
+	mainWindow = new BrowserWindow({
+		width: 1024,
+		height: 728,
+		backgroundColor: '#04050A',
+		show: false
+	})
 
-    mainWindow.loadURL(`file://${__dirname}/app/index-electron.html`)
+	mainWindow.loadURL(`file://${__dirname}/app/index-electron.html`)
 
-    // Bootstrap listeners
-    const eventsConfig = { app, mainWindow, api, emitter: mainWindow.webContents, listener: ipcMain, config: main };
-    events(eventsConfig);
+	// Bootstrap listeners
+	const eventsConfig = { app, mainWindow, api, emitter: mainWindow.webContents, listener: ipcMain, config: main };
+	events(eventsConfig);
 
-    mainWindow.webContents.on('did-finish-load', () => {
-        mainWindow.show()
-        mainWindow.focus()
-    });
+	mainWindow.webContents.on('did-finish-load', () => {
+		mainWindow.show()
+		mainWindow.focus()
+	});
 
-    mainWindow.on('closed', () => { mainWindow = null })
+	mainWindow.on('closed', () => { mainWindow = null })
 
-    mainWindow.on('enter-full-screen', () => {
-        // Send async message to renderer process to update the store
-        mainWindow.webContents.send('fullscreen-toggled', true);
-    });
+	mainWindow.on('enter-full-screen', () => {
+		// Send async message to renderer process to update the store
+		mainWindow.webContents.send('fullscreen-toggled', true);
+	});
 
-    mainWindow.on('leave-full-screen', () => {
-        // Send async message to renderer process to update the store
-        mainWindow.webContents.send('fullscreen-toggled', false);
-    });
+	mainWindow.on('leave-full-screen', () => {
+		// Send async message to renderer process to update the store
+		mainWindow.webContents.send('fullscreen-toggled', false);
+	});
 
-    Menu.setApplicationMenu(null);
+	Menu.setApplicationMenu(null);
 
-    if (process.env.NODE_ENV === 'development') {
-        mainWindow.openDevTools()
-        mainWindow.webContents.on('context-menu', (e, props) => {
-            const { x, y } = props
+	if (process.env.NODE_ENV === 'development') {
+		mainWindow.openDevTools()
+		mainWindow.webContents.on('context-menu', (e, props) => {
+			const { x, y } = props
 
-            Menu.buildFromTemplate([{
-                label: 'Inspect element',
-                click() {
-                    mainWindow.inspectElement(x, y)
-                }
-            }]).popup(mainWindow)
-        });
-    }
+			Menu.buildFromTemplate([{
+				label: 'Inspect element',
+				click() {
+					mainWindow.inspectElement(x, y)
+				}
+			}]).popup(mainWindow)
+		});
+	}
 
 })
