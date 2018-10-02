@@ -31,3 +31,19 @@
     text-decoration: none;
     border-bottom: 2px solid $blue;
 }
+
+select {
+    width: 100%;
+    border: 1px solid #04050A;
+    background: rgba(97, 89, 255, 1);
+    padding: 5px 10px 5px 5px;
+    margin-top: 7px;
+    border-radius: 3px;
+    font-size: .8em;
+    height: 37px;
+}
+
+option {
+    color: inherit;
+    font: inherit;
+}

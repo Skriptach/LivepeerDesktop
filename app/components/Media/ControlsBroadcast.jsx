@@ -51,9 +51,8 @@ class ControlsBroadcast extends React.Component {
 					</li>
 				</ul>
 
-				<Modal show={this.state.isShareOpen} onClose={this.toggleShare}>
+				<Modal title="Share" show={this.state.isShareOpen} onClose={this.toggleShare}>
 					<i className="modal-icon" dangerouslySetInnerHTML={{ __html: share }} />
-					<h1>Share</h1>
 					<div className="fieldset">
 						<div className="legend">
 							<u>Stream ID</u>

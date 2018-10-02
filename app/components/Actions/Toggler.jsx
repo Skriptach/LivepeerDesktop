@@ -54,7 +54,7 @@ class Toggler extends React.Component {
 		return (
 			<div className={this.getClassState()}>
 				<button className="toggler__broadcaster" onClick={() => this.toggleRecord()}>
-					<span className="toggler__broadcaster-label">Rec</span>
+					<span className="toggler__broadcaster-label">Air</span>
 					<span className="toggler__broadcaster_recording-label">Stop</span>
 					<i className="toggler__broadcaster-icon" dangerouslySetInnerHTML={{ __html: stop }} />
 				</button>

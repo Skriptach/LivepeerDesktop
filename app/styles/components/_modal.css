@@ -22,18 +22,14 @@
 }
 
 .modal-header {
-    position: absolute;
-    top: 2em;
-    right: 10vw;
     display: flex;
     width: 100%;
-    align-items: center;
-    justify-content: flex-end;
-    font-weight: bold;
-    color: $record;
+    position: relative;
 }
 
 .modal-btn-close {
+    position: absolute;
+    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +50,7 @@
     font-weight: 200;
 }
 
-.modal-content h1 {
+.modal h1 {
     font-size: 2.8em;
     font-weight: 200;
     margin: 0 0 .5em 0;
@@ -81,3 +77,41 @@
     will-change: all;
 }
 .modal.modal-open { bottom: 0 }
+
+.modal.panel {
+    width: 400px;
+    padding: 5vh 5vh 5vh;
+    height: 100vh;
+    left: auto;
+    right: 0;
+    justify-content: unset;
+}
+
+
+.modal.panel .legend {
+    display: block;
+    margin-bottom: 20px;
+}
+
+#imageLogo {
+    display: none;
+}
+
+#previewLogo {
+    display: block;
+    margin-top: 7px;
+    min-width: 64px;
+    border: 1px solid #FFF;
+    border-radius: 3px;
+}
+
+.action {
+    text-align: right;
+}
+
+.action button {
+    border: 1px solid $blue-dark;
+    padding: 5px 15px 5px 15px;
+    border-radius: 3px;
+    height: 50px;
+}

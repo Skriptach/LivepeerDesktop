@@ -36,7 +36,7 @@
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     height: $footer-height;
     -webkit-user-select: none !important;
 }
@@ -55,7 +55,6 @@
 /* CONTROLS */
 
 .window-footer .window__controls {
-    margin-left: auto;
     transform: scale(.5);
 }
 

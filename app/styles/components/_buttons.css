@@ -7,6 +7,7 @@
   - Any extensions to input styling should go in this file
 */
 
+select,
 button {
     font-family: 'Lato';
     font-size: inherit;

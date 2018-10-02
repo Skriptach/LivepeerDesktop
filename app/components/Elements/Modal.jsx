@@ -7,7 +7,8 @@ class Modal extends React.Component {
 	// toDo animation via ReactCSSTransitionGroup
 		classNames({
 			modal: true,
-			'modal-open': this.props.show
+			'modal-open': this.props.show,
+			'panel': this.props.panel
 		})
 
 	render() {
@@ -18,6 +19,7 @@ class Modal extends React.Component {
 		return (
 			<section className={this.getClassState()}>
 				<header className="modal-header">
+					<h1>{this.props.title}</h1>
 					<button
 						className="modal-btn-close withBorder withBorder-light circle"
 						onClick={() => this.props.onClose()}

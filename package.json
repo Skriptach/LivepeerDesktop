@@ -128,6 +128,7 @@
     "mobx-react": "^5.2.3",
     "mobx-react-devtools": "^6.0.2",
     "node-media-server": "^1.4.3",
+    "pixi.js": "^4.8.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-router-dom": "^4.4.0-alpha.1",

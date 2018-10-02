@@ -21,6 +21,7 @@ const playerProps = {
 };
 
 @inject('video')
+@inject('media')
 @observer
 class VideoSwitcher extends React.Component {
 	constructor(props) {
@@ -29,36 +30,23 @@ class VideoSwitcher extends React.Component {
 			url: '',
 			videoJsOptions: {}
 		}
+		this.props.media.on('stream', this.successCallback.bind(this));
 	}
 
 	componentDidMount = () => {
 		const { playing } = this.props.video;
 
 		/* broadcasting state ?*/
-		if (!playing && navigator.getUserMedia) {
-			this.webcamPrep();
-		} else {
-			// not supported
+		if (!playing) {
+			this.setState({ url: this.props.media.streamURL })
+			this.props.media.getCams()
+				.then(() => this.props.media.play())
 		}
 	}
 
-
-	webcamPrep = () => {
-		const self = this;
-		navigator.mediaDevices.enumerateDevices().then((sourceInfos) => {
-			const { newVideoSource } = this.props.video;
-			for (let i = 0; i !== sourceInfos.length; ++i) {
-				if (sourceInfos[i].kind === 'videoinput') {
-					newVideoSource(sourceInfos[i]);
-				}
-			}
-			self.playVideo();
-		})
-	}
-
 	successCallback = (stream) => {
-		const url = window.URL.createObjectURL(stream);
 		const self = this;
+
 		const { onError } = this.props.video;
 		const mediaStreamTrack = stream.getVideoTracks()[0];
 		if (typeof mediaStreamTrack !== 'undefined') {
@@ -68,38 +56,7 @@ class VideoSwitcher extends React.Component {
 				onError({ error: 5 })
 			}
 
-			this.setState({ url })
-			// this.props.video.setVideoUrl(url);
-			// this.refs.camera.play();
-		} else {
-			// permission denied
 		}
-	}
-
-	errorCallback = (err) => {
-		console.error('Rejected', err);
-	}
-
-	playVideo = () => {
-		const self = this;
-
-		const constraints = {
-			audio: false,
-			video: true,
-			optional: [
-				{ width: 650 },
-				{ width: { min: 650 } },
-				{ frameRate: 60 },
-				{ width: { max: 800 } },
-				{ facingMode: 'user' }
-			]
-		}
-
-		return navigator.webkitGetUserMedia(
-			constraints,
-			self.successCallback,
-			self.errorCallback
-		);
 	}
 
 	isPlaying = () => this.props.video.toggleCamera(true)

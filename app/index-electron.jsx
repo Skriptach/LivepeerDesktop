@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'mobx-react';
 import { Home } from './containers';
-import { VideoStore, WinStore } from './stores';
+import { VideoStore, WinStore, MediaStore } from './stores';
 import './styles/main.css';
 
 
@@ -24,7 +24,8 @@ if (module.hot && isDev) {
 
 const stores = {
 	video: new VideoStore({ events: eventsHandler }),
-	win: new WinStore({ events: eventsHandler })
+	win: new WinStore({ events: eventsHandler }),
+	media: new MediaStore()
 };
 
 

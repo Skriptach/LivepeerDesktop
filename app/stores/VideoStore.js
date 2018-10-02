@@ -12,12 +12,6 @@ export default class VideoStore {
 	@observable peerCount = 0;
 	@observable timer = 0;
 
-
-	@observable videoSource = [];
-	@observable videoIndex = 0;
-	@observable videoSourceLength = 0;
-
-
 	// recording/playing ID ref
 	@observable broadcasting = 0;
 	@observable playing = 0;
@@ -80,10 +74,6 @@ export default class VideoStore {
 
 	@action setVideoUrl = (url) => {
 		this.videoUrl = url;
-	}
-
-	@action newVideoSource = (source) => {
-		this.videoSource.push(source);
 	}
 
 	@action onError = (params) => {
