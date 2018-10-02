@@ -46,6 +46,10 @@ class Toggler extends React.Component {
 		this.props.video.togglePlayer(strmID);
 	}
 
+	formatAsPlain = (event) => {
+		this.playerID.innerText = this.playerID.innerText.replace(/\n/g, '');
+	}
+
 	render() {
 		return (
 			<div className={this.getClassState()}>
@@ -64,6 +68,7 @@ class Toggler extends React.Component {
 						ref={(c) => { this.playerID = c; }}
 						onFocus={() => this.toggleFocus(true)}
 						onBlur={() => this.toggleFocus(false)}
+						onInput={() => this.formatAsPlain()}
 						contentEditable
 						data-tooltip="or You have a Stream ID?" placeholder="Paste here your Stream ID"
 					/>
