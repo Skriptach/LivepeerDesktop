@@ -24,6 +24,7 @@ class Header extends React.Component {
 		return (
 			<header className="window-header">
 				<ul>
+					{!!this.props.video.playing &&
 					<li className="switch__controls">
 						<button
 							onClick={() => this.back()}
@@ -32,6 +33,7 @@ class Header extends React.Component {
 							<i dangerouslySetInnerHTML={{ __html: arrowRight }} />
 						</button>
 					</li>
+					}
 					<li className="window__controls">
 						<a
 							onClick={() => this.minimizeWindow()}
