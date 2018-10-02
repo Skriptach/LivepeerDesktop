@@ -5,7 +5,8 @@ import arrowRight from '../../static/arrowRight.svg';
 import close from '../../static/traffic-light-close.svg';
 import minimize from '../../static/traffic-light-minimize.svg';
 
-@inject('video') @observer
+@inject('video')
+@observer
 class Header extends React.Component {
 
 	back = () => {

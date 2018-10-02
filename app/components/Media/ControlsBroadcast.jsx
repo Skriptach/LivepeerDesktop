@@ -6,7 +6,8 @@ import share from '../../static/share.svg';
 import CONSTANTS from '../../constants';
 import { Modal, Clipboard, Openexternal } from '../';
 
-@inject('video') @observer
+@inject('video')
+@observer
 class ControlsBroadcast extends React.Component {
 	constructor(props) {
 		super(props);

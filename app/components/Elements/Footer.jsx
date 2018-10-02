@@ -4,7 +4,8 @@ import classNames from 'classnames';
 import ICO_fullscreen from '../../static/fullscreen.svg';
 import ICO_fullscreenExit from '../../static/fullscreen-exit.svg';
 
-@inject('win') @observer
+@inject('win')
+@observer
 class Footer extends React.Component {
 	getClassState = () => {
 		const { fullscreen } = this.props.win;

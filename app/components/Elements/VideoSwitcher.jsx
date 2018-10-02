@@ -20,7 +20,8 @@ const playerProps = {
 	}]
 };
 
-@inject('video') @observer
+@inject('video')
+@observer
 class VideoSwitcher extends React.Component {
 	constructor(props) {
 		super(props);

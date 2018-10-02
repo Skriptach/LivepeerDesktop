@@ -5,7 +5,8 @@ import stop from '../../static/stop.svg';
 import CONSTANTS from '../../constants';
 import { Openexternal } from '../';
 
-@inject('video') @observer
+@inject('video')
+@observer
 class ControlsPlayer extends React.Component {
 	constructor(props) {
 		super(props);
