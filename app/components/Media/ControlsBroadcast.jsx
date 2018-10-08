@@ -1,10 +1,9 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react';
 import peer from '../../static/peer.svg';
-import camera from '../../static/camera.svg';
 import share from '../../static/share.svg';
 import CONSTANTS from '../../constants';
-import { Modal, Clipboard, Openexternal } from '../';
+import { Modal, Clipboard, Openexternal, Timer } from '../';
 
 @inject('video')
 @observer
@@ -24,18 +23,12 @@ class ControlsBroadcast extends React.Component {
 	}
 
 	render() {
-		const { peerCount, broadcasting, timer } = this.props.video;
+		const { peerCount, broadcasting } = this.props.video;
 		const playerURL = `${CONSTANTS.webURL}${broadcasting}`;
 		return (
 			<div className="control-container">
 				<ul className="control-actions">
-					<li className="control-action">
-						<div className="control-action-item__timer-label">
-							<i className="control-action-item__timer-icon" dangerouslySetInnerHTML={{ __html: camera }} />
-							<span>LIVE</span>
-						</div>
-						<strong className="control-action-item__timer-time">{ timer || '00:00' }</strong>
-					</li>
+					<Timer />
 					<li className="control-action">
 						<div className="control-action-item__counter-label">
 							<i className="control-action-item__counter-icon" dangerouslySetInnerHTML={{ __html: peer }} />
