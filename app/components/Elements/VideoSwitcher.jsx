@@ -1,6 +1,7 @@
 import React from 'react'
 import { observer, inject } from 'mobx-react';
 import { Video } from '../';
+import { StreamSwitcher } from '../';
 
 const recorderProps = {
 	autoplay: true,
@@ -30,7 +31,6 @@ class VideoSwitcher extends React.Component {
 			url: '',
 			videoJsOptions: {}
 		}
-		this.props.media.on('stream', this.successCallback.bind(this));
 	}
 
 	componentDidMount = () => {
@@ -41,21 +41,6 @@ class VideoSwitcher extends React.Component {
 			this.setState({ url: this.props.media.streamURL })
 			this.props.media.getCams()
 				.then(() => this.props.media.play())
-		}
-	}
-
-	successCallback = (stream) => {
-		const self = this;
-
-		const { onError } = this.props.video;
-		const mediaStreamTrack = stream.getVideoTracks()[0];
-		if (typeof mediaStreamTrack !== 'undefined') {
-			mediaStreamTrack.onended = () => { // for Chrome.
-				// busy camera
-				self.props.video.toggleCamera(false);
-				onError({ error: 5 })
-			}
-
 		}
 	}
 
@@ -83,6 +68,7 @@ class VideoSwitcher extends React.Component {
 		return (
 			<div className="video-wrapper">
 				<Video {...props} />
+				<StreamSwitcher />
 			</div>
 		);
 	}

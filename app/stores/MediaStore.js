@@ -28,8 +28,8 @@ export default class MediaStore extends EventEmitter {
 		super();
 
 		this.video = document.createElement('video');
-		const blend = new Blender(this.video, this.currentLogo);
-		this.streamURL = blend.getURL();
+		this.blend = new Blender(this.video, this.currentLogo);
+		this.streamURL = this.blend.getURL();
 	}
 
 	@action toggleConfig () {

@@ -32,6 +32,7 @@ export { default as Openexternal } from './Actions/Openexternal';
 
 export { default as Video } from './Media/Video';
 export { default as Timer } from './Media/Timer';
+export { default as StreamSwitcher } from './Media/StreamSwitcher';
 export { default as ControlsPlayer } from './Media/ControlsPlayer';
 export { default as ControlsBroadcast } from './Media/ControlsBroadcast';
 export { default as ControlsConfig } from './Media/ControlsConfig';
