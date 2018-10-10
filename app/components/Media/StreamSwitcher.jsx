@@ -29,7 +29,7 @@ export default class StreamSwitcher extends React.Component {
 	render() {
 		const { broadcasting } = this.props.video;
 
-		this.props.media.blend.setLogoState(!!broadcasting);
+		this.props.media.setAirState(!!broadcasting);
 
 		return (null);
 	}

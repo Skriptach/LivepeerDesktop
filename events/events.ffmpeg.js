@@ -3,24 +3,25 @@
 	@return a events received in the stores
 */
 
-import { StreamNode } from '../services'
+import { StreamNode, StreamServer } from '../services'
 
 export const ffmpegEvents = ({ api, emitter, listener }) => {
-	/*
-		Listen for API callbacks
-	*/
+
 	api.on('broadcast', (args) => { emitter.send('broadcast', args) })
 
-	/*
-		Toggle the broadcaster state
-	*/
 	const streamNode = StreamNode();
+	const streamServer = new StreamServer();
+
 	listener.on('broadcast', (event, arg) => {
 		const { fromState } = arg;
 		if (!fromState) {
-			streamNode.run();
-			emitter.send('broadcast', { hlsStrmID: 'streamNode' });
+			streamNode.run()
+			streamServer.run()
+				.then(() => {
+					emitter.send('broadcast', { hlsStrmID: 'streamNode' });
+				});
 		} else if (fromState) {
+			streamServer.stop();
 			streamNode.stop();
 			emitter.send('broadcast', 0);
 		}

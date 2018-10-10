@@ -123,6 +123,7 @@
     "electron-builder": "^20.26.1",
     "electron-log": "^2.2.16",
     "events": "^3.0.0",
+    "ffmpeg-static": "^2.3.0",
     "mailgun-js": "^0.20.0",
     "mobx": "^5.0.3",
     "mobx-react": "^5.2.3",
@@ -136,6 +137,7 @@
     "rimraf": "^2.6.2",
     "shelljs": "^0.8.2",
     "source-map-support": "^0.5.6",
+    "ws": "^6.1.0",
     "xmlhttprequest": "^1.8.0"
   }
 }

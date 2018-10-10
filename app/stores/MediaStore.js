@@ -1,6 +1,7 @@
 import EventEmitter from 'events';
 import { observable, action } from 'mobx';
 import Blender from './Blender';
+import Stream from './Stream';
 
 export default class MediaStore extends EventEmitter {
 
@@ -30,6 +31,7 @@ export default class MediaStore extends EventEmitter {
 		this.video = document.createElement('video');
 		this.blend = new Blender(this.video, this.currentLogo);
 		this.streamURL = this.blend.getURL();
+		this.wsStream = new Stream(this.blend.stream);
 	}
 
 	@action toggleConfig () {
@@ -127,6 +129,11 @@ export default class MediaStore extends EventEmitter {
 			}
 		}
 		return navigator.mediaDevices.getUserMedia(constraints);
+	}
+
+	setAirState (state) {
+		this.blend.setLogoState(state);
+		this.wsStream.setStreamState(state);
 	}
 
 }

@@ -14,6 +14,12 @@ export default class Blender {
 		const logo = this.logo = new PIXI.Sprite(base);
 
 		video.onchange = function () {
+			const audioTracks = _self.stream.getAudioTracks();
+			if (audioTracks.length) {
+				_self.stream.removeTrack(audioTracks[0])
+			}
+			_self.stream.addTrack(video.srcObject.getAudioTracks()[0]);
+			
 			const mediaStreamTrack = video.srcObject.getVideoTracks()[0];
 			const videoSettings = mediaStreamTrack.getSettings();
 			_self.app.renderer.resize(videoSettings.width, videoSettings.height);
